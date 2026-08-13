@@ -1,62 +1,64 @@
-# Roadmap: projeto-expoceep
+# Roadmap pedagógico: projeto-expoceep
 
-Objetivo: fornecer um repositório limpo e didático para a turma construir um sistema simples de previsão de evasão, dividindo o trabalho em issues pequenas e claras. MVP deve estar pronto para apresentação (EXPOCEEP).
+Objetivo pedagógico
+- Aprender o ciclo completo de um projeto de IA: coleta/limpeza de dados, modelagem simples e apresentação de resultados.
+- Prática colaborativa com GitHub: issues pequenas, PRs, revisão e entrega em equipe.
 
-Datas-chave
-- Kickoff & divisão de issues: imediato
-- MVP funcional (modelo + UI minimal): até a data de entrega da feira
+Resultados de aprendizagem esperados
+- Executar pipeline de dados reproduzível
+- Treinar e avaliar um modelo simples (interpretável)
+- Criar interface básica para demonstração
+- Comunicar resultados e limitações com responsabilidade (LGPD)
 
-MVP (mínimo realmente necessário)
-1. Pipeline de dados: baixar UCI → limpar → gerar 8 features + alvo
-2. Modelo simples: treinar e salvar (ex.: regressão logística / sklearn)
-3. Interface mínima: Streamlit com formulário + botão "Prever" mostrando risco e fatores principais
-4. Instruções para reproduzir localmente + pequeno README
+Visão do MVP (para a feira)
+1. Pipeline: baixar dataset público → limpar → exportar 8 features + alvo
+2. Treinamento: script que salva `modelo.joblib` e gera métricas simples
+3. Interface: Streamlit mínimo com formulário e explicação das principais variáveis
+4. Documentação curta com instruções de execução e aviso de privacidade
 
-Estrutura de times e labels sugeridos
-- labels: dados, frontend, backend, docs, mvp, easy, medium, hard, help-wanted
-- times: Dados & Modelo (dados), Interface (frontend), Backend/Infra (backend), Documentação (docs)
+Organização da turma
+- Labels sugeridas: dados, frontend, backend, docs, mvp, easy, medium, hard, help-wanted
+- Times (flexíveis): Dados & Modelo | Interface | Infra | Documentação
 
-Lista de issues pequenas (sugestões prontas para criar)
+Issues didáticas (cada issue deve ensinar algo)
 - dados/01-baixar-dataset [dados, easy]
-  - Tarefa: implementar `baixar.py` que baixa o dataset UCI e salva em `dados/raw.csv`.
-  - Critério de aceite: `dados/raw.csv` criado localmente após rodar script.
+  - Aprendizado: acessar fontes e salvar dados localmente
+  - Entregável: `dados/raw.csv` (gerado pelo script)
 
 - dados/02-limpar-dados [dados, easy]
-  - Tarefa: `limpar.py` transforma raw -> `dados/processed.csv` com as 8 colunas + `evadiu`.
-  - Critério: script idempotente e sem dados pessoais.
+  - Aprendizado: limpeza, seleção de colunas e anonimização
+  - Entregável: `dados/processed.csv` com 8 features + `evadiu`
 
 - dados/03-treinar-modelo [dados, medium]
-  - Tarefa: `treinar.py` treina um modelo simples e grava `modelo.joblib` em `dados/`.
-  - Critério: script gera arquivo e relatório com métricas (acurácia/AUC).
+  - Aprendizado: pipeline de treino, salvar modelo, métricas básicas
+  - Entregável: `dados/modelo.joblib` + relatório simples (README ou notebook)
 
 - front/01-streamlit-form [frontend, easy, mvp]
-  - Tarefa: `app.py` com formulário, chamada local ao modelo e exibição de risco + fatores.
-  - Critério: roda com `streamlit run app.py` e retorna previsão.
+  - Aprendizado: integrar modelo à interface e explicar saída para usuário
+  - Entregável: `app.py` que roda com `streamlit run app.py`
 
 - infra/01-docker-app [backend, medium]
-  - Tarefa: Dockerfile para rodar a app Streamlit (opcional para MVP).
-  - Critério: imagem builda e roda localmente.
+  - Aprendizado: empacotar app para reproducibilidade
+  - Entregável: `Dockerfile` com instruções de uso
 
 - docs/01-readme-expand [docs, easy]
-  - Tarefa: completar README com como rodar, dependências e LGPD (não subir dados reais).
+  - Aprendizado: escrever instruções claras e concisas
+  - Entregável: README com como rodar e aviso LGPD
 
-- docs/02-licenca [docs, easy]
-  - Tarefa: adicionar LICENSE (MIT) e `CODE_OF_CONDUCT.md` simples.
+Sprints sugeridos (curtos e orientados)
+- Sprint 1 (1 semana): baixar + limpar + README básico
+- Sprint 2 (1 semana): treinar modelo + app mínimo
+- Sprint 3 (1 semana): melhorias, testes e preparação de demo
 
-Aceitação geral de issues
-- Pequenos commits atômicos
-- Instruções claras no PR
-- Não commitar dados sensíveis
+Orientações para o professor (mentoria e avaliação)
+- Reserve check-ins curtos (15–30 min) por sprint para tirar dúvidas
+- Peça pequenos PRs por tarefa (1–3 arquivos) para facilitar revisão
+- Critérios de avaliação: completude do entregável, clareza da documentação e qualidade do processo (commits/PRs)
 
-Board e sprints
-- Sprint 1 (7 dias): baixar + limpar + README básico
-- Sprint 2 (7 dias): treinar modelo + app minimal
-- Sprint 3 (7 dias): refinamento e preparação de demo
-
-Observações LGPD
-- Nunca comitar CSVs com dados reais
-- Usar datasets anonimizados/ públicos apenas
+Avisos de privacidade (LGPD)
+- Nunca commitar CSVs com dados pessoais
+- Usar apenas datasets públicos ou simulados para desenvolvimento
 
 Referências
-- Instruções de execução local (ver CONTRIBUTING.md)
+- Veja CONTRIBUTING.md para fluxo Git e execução local
 
